@@ -4,6 +4,9 @@
     <string name="app_name">igra</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="url_down">http://5.firepic.org/5/images/2014-11/27/kblrx5te7zhu.png</string>
+    <string name="url_left">http://5.firepic.org/5/images/2014-11/27/ka2bf6hxjgnw.png</string>
+    <string name="url_right">http://5.firepic.org/5/images/2014-11/27/gvl9dwje8123.png</string>
     <string name="about_title">
        О Программе</string>
 
