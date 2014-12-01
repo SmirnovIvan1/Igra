@@ -42,7 +42,13 @@ public class MainActivity extends ActionBarActivity {
         sharedPreferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         final TextView text2 = (TextView) findViewById(R.id.textView2);
         rand = new Random();
-        game();
+        findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                game();
+            }
+        });
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +80,6 @@ public class MainActivity extends ActionBarActivity {
                 } else {
                     run = false;
                     text2.setText("Проиграл " + score);
-
                 }
             }
         });
@@ -91,12 +96,11 @@ public class MainActivity extends ActionBarActivity {
         return zagad;
     }
     public int rand2(){
-       int a = rand.nextInt();
-        return a;
+       int a = (int) (5000-(5000-2000)*Math.random());
+       return a;
     }
 
    public void game(){
-
         android.os.Handler.Callback hc = new android.os.Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -111,12 +115,10 @@ public class MainActivity extends ActionBarActivity {
                         ImageLoader.getInstance().displayImage(getString(R.string.url_right), (ImageView) findViewById(R.id.imageView));
                     }
                 }
-
                 if(run){
-                    handler.sendEmptyMessageDelayed(1, 2000);
+                    handler.sendEmptyMessageDelayed(1, rand2());
                     return false;
                 }
-
                 return false;
             }
         };
