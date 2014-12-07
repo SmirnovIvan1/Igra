@@ -3,10 +3,14 @@ package com.example.igra.app;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,6 +25,8 @@ public class MainActivity extends ActionBarActivity {
     public static final String APP_PREFERENCES = "mysettings";
     public static final String APP_PREFERENCES_COUNTER = "score";
     SharedPreferences sharedPreferences;
+    MediaPlayer mediaPlayer;
+    AudioManager am;
     public int zagad;
     public int score;
     boolean run = true;
@@ -45,7 +51,7 @@ public class MainActivity extends ActionBarActivity {
         findViewById(R.id.button4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                score = 0;
                 game();
             }
         });
@@ -58,9 +64,11 @@ public class MainActivity extends ActionBarActivity {
                 } else {
                     run = false;
                     text2.setText("Проиграл " + score);
+                    newactiv();
                 }
             }
         });
+
         findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,9 +77,11 @@ public class MainActivity extends ActionBarActivity {
                 } else {
                     run = false;
                     text2.setText("Проиграл " + score);
+                    newactiv();
                 }
             }
         });
+
         findViewById(R.id.button3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,16 +90,39 @@ public class MainActivity extends ActionBarActivity {
                 } else {
                     run = false;
                     text2.setText("Проиграл " + score);
+                    newactiv();
                 }
             }
         });
+
         findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
-                startActivity(intent);
+                newactiv();
             }
         });
+
+        findViewById(R.id.button6).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer.pause();
+                run = false;
+            }
+        });
+
+        findViewById(R.id.button7).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer.start();
+                run = true;
+                game();
+            }
+        });
+    }
+    public void newactiv(){
+        Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+        startActivity(intent);
+
     }
     public int rand(){
         zagad = rand.nextInt(3);
@@ -124,6 +157,20 @@ public class MainActivity extends ActionBarActivity {
         };
         handler = new Handler(hc);
         handler.sendEmptyMessageDelayed(1, 2000);
+       releaseMP();
+       mediaPlayer = MediaPlayer.create(this, R.raw.explosion);
+       mediaPlayer.start();
+    }
+
+    private void releaseMP() {
+        if (mediaPlayer != null) {
+            try {
+                mediaPlayer.release();
+                mediaPlayer = null;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -143,4 +190,28 @@ public class MainActivity extends ActionBarActivity {
             score = sharedPreferences.getInt(APP_PREFERENCES_COUNTER, 0);
         }
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        releaseMP();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.score:
+                newactiv();
+                return true;
+                default:
+                    return super.onOptionsItemSelected(item);
+        }
+    }
 }
+
+

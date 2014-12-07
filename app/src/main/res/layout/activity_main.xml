@@ -20,7 +20,8 @@
             android:text="2"
             android:id="@+id/button2"
             android:layout_alignWithParentIfMissing="true"
-            android:layout_above="@+id/button4" android:layout_toRightOf="@+id/textView2"/>
+            android:layout_above="@+id/button4" android:layout_toLeftOf="@+id/imageView"
+            android:layout_toStartOf="@+id/imageView"/>
     <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,7 +31,7 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Новое значение"
+            android:text="Старт"
             android:id="@+id/button4"
             android:layout_marginTop="49dp" android:layout_centerVertical="true"/>
     <TextView
@@ -63,4 +64,18 @@
             android:id="@+id/imageView3"
             android:layout_below="@+id/imageView" android:layout_alignLeft="@+id/button3"
             android:layout_alignStart="@+id/button3"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Пауза"
+            android:id="@+id/button6"
+            android:layout_toEndOf="@+id/button2" android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/button2" android:layout_alignEnd="@+id/button2"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Продолжить"
+            android:id="@+id/button7"
+            android:layout_alignTop="@+id/button6" android:layout_alignRight="@+id/button5"
+            android:layout_alignEnd="@+id/button5"/>
 </RelativeLayout>

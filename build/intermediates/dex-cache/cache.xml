@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pre-dex-items>
+
+    <item
+        dex="/Users/ivan/IdeaProjects/MyApplication2/app/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.3-078aab3bf8c4c078ef6530a2a68cdc7c78438e92.jar"
+        jar="/Users/ivan/IdeaProjects/MyApplication2/app/libs/universal-image-loader-1.9.3.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="a85588bec3e2c4584d593d3f15df1677321bca72"/>
+    <item
+        dex="/Users/ivan/IdeaProjects/MyApplication2/app/build/intermediates/pre-dexed/debug/support-v4-19.1.0-e9b90646975822610e21bbfedd4e7bcd7d65b880.jar"
+        jar="/Users/ivan/Documents/android-sdk-macosx/extras/android/m2repository/com/android/support/support-v4/19.1.0/support-v4-19.1.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
+    <item
+        dex="/Users/ivan/IdeaProjects/MyApplication2/app/build/intermediates/pre-dexed/debug/classes-1b03e4b083a14b296ecd7db6b291e48a5bac4530.jar"
+        jar="/Users/ivan/IdeaProjects/MyApplication2/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/19.1.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28"/>
+
+</pre-dex-items>

@@ -2,8 +2,11 @@ package com.example.igra.app;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,6 +29,7 @@ public class AboutActivity extends Activity{
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about);
+
         sharedPreferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         ListView listView = (ListView) findViewById(R.id.listMain);
         final EditText editText = (EditText) findViewById(R.id.editText);
@@ -94,4 +98,25 @@ public class AboutActivity extends Activity{
           score = sharedPreferences.getInt(APP_PREFERENCES_COUNTER, 0);
       }
       }
+    public void newactiv2(){
+        Intent intent = new Intent(AboutActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main2, menu);
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.play:
+                newactiv2();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
